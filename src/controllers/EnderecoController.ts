@@ -20,7 +20,7 @@ export default {
    },
 
    async list(req: Request, res: Response) {
-      const response = await Transactions.find<Endereco>(Endereco)
+      const response = await Transactions.list<Endereco>(Endereco)
 
       return res.status(200).json({data: response})
    },

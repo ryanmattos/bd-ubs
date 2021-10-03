@@ -11,19 +11,32 @@ export default {
       return obj;
    },
 
-   async find<T>(entity: EntityTarget<T>, id?: number) {
+   async find<T>(entity: EntityTarget<T>, id: number, relations?: string[]) {
       const repository = getRepository(entity);
       
       let obj = null;
       if (id) {
          obj = await repository.findOne(id, {
-            loadRelationIds: true
+            loadRelationIds: true,
+            relations: relations
          })
       } else {
          obj = await repository.find({
-            loadRelationIds: true
+            loadRelationIds: true,
+            relations: relations
          })
       }
+
+      return obj;
+   },
+
+   async list<T>(entity: EntityTarget<T>, relations?: string[]) {
+      const repository = getRepository(entity);
+      
+      const obj = await repository.find({
+            loadRelationIds: true,
+            relations: relations
+         })
 
       return obj;
    },

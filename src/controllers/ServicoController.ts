@@ -4,6 +4,8 @@ import Transactions from '../utils/Transactions'
 
 import Servico from '../models/Servico'
 
+const RELATIONS = ['funcionario']
+
 export default {
    async create(req: Request, res: Response) {
       const response = await Transactions.insert<Servico>(Servico, req.body)
@@ -14,13 +16,13 @@ export default {
    async find(req: Request, res: Response) {
       const { id } = req.params
 
-      const response = await Transactions.find<Servico>(Servico, Number(id))
+      const response = await Transactions.find<Servico>(Servico, Number(id), RELATIONS)
 
       return res.status(200).json({data: response})
    },
 
    async list(req: Request, res: Response) {
-      const response = await Transactions.find<Servico>(Servico)
+      const response = await Transactions.list<Servico>(Servico, RELATIONS)
 
       return res.status(200).json({data: response})
    },

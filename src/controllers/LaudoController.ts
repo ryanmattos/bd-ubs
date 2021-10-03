@@ -4,6 +4,8 @@ import Transactions from '../utils/Transactions'
 
 import Laudo from '../models/Laudo'
 
+const RELATIONS = ['atendimento_servico']
+
 export default {
    async create(req: Request, res: Response) {
       const response = await Transactions.insert<Laudo>(Laudo, req.body)
@@ -14,13 +16,13 @@ export default {
    async find(req: Request, res: Response) {
       const { id } = req.params
 
-      const response = await Transactions.find<Laudo>(Laudo, Number(id))
+      const response = await Transactions.find<Laudo>(Laudo, Number(id), RELATIONS)
 
       return res.status(200).json({data: response})
    },
 
    async list(req: Request, res: Response) {
-      const response = await Transactions.find<Laudo>(Laudo)
+      const response = await Transactions.list<Laudo>(Laudo, RELATIONS)
 
       return res.status(200).json({data: response})
    },

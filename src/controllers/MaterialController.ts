@@ -20,7 +20,7 @@ export default {
    },
 
    async list(req: Request, res: Response) {
-      const response = await Transactions.find<Material>(Material)
+      const response = await Transactions.list<Material>(Material)
 
       return res.status(200).json({data: response})
    },
