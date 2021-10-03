@@ -14,18 +14,9 @@ export default {
    async find<T>(entity: EntityTarget<T>, id: number, relations?: string[]) {
       const repository = getRepository(entity);
       
-      let obj = null;
-      if (id) {
-         obj = await repository.findOne(id, {
-            loadRelationIds: true,
+      const obj = await repository.findOne(id, {
             relations: relations
          })
-      } else {
-         obj = await repository.find({
-            loadRelationIds: true,
-            relations: relations
-         })
-      }
 
       return obj;
    },
@@ -34,7 +25,6 @@ export default {
       const repository = getRepository(entity);
       
       const obj = await repository.find({
-            loadRelationIds: true,
             relations: relations
          })
 
