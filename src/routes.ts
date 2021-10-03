@@ -1,5 +1,13 @@
 import { Router } from 'express'
+import AtendimentoController from './controllers/AtendimentoController';
+import AtendimentoServicoController from './controllers/AtendimentoServicoController';
 import EnderecoController from './controllers/EnderecoController';
+import FuncionarioController from './controllers/FuncionarioController';
+import LaudoController from './controllers/LaudoController';
+import MaterialController from './controllers/MaterialController';
+import PessoaController from './controllers/PessoaController';
+import ServicoController from './controllers/ServicoController';
+import TelefoneController from './controllers/TelefoneController';
 import UbsController from './controllers/UbsController'
 
 
@@ -17,55 +25,55 @@ routes.put('/endereco/:id', EnderecoController.update)
 routes.delete('/endereco/:id', EnderecoController.delete)
 
 /**ATENDIMENTO ROUTES */
-routes.post('/atendimento', EnderecoController.create)
-routes.get('/atendimento', EnderecoController.create)
-routes.get('/atendimento/:id', EnderecoController.create)
+routes.post('/atendimento', AtendimentoController.create)
+routes.get('/atendimento', AtendimentoController.list)
+routes.get('/atendimento/:id', AtendimentoController.find)
 
 /**ATENDIMENTO SERVICO ROUTES */
-routes.post('/atendimento-servico', EnderecoController.create)
-routes.get('/atendimento-servico', EnderecoController.create)
-routes.get('/atendimento-servico/:id', EnderecoController.create)
+routes.post('/atendimento-servico', AtendimentoServicoController.create)
+routes.get('/atendimento-servico', AtendimentoServicoController.list)
+routes.get('/atendimento-servico/:id', AtendimentoServicoController.find)
 
 /**FUNCIONARIO ROUTES */
-routes.post('/funcionario', EnderecoController.create)
-routes.get('/funcionario', EnderecoController.create)
-routes.get('/funcionario/:id', EnderecoController.create)
-routes.put('/funcionario/:id', EnderecoController.create)
+routes.post('/funcionario', FuncionarioController.create)
+routes.get('/funcionario', FuncionarioController.list)
+routes.get('/funcionario/:id', FuncionarioController.find)
+routes.put('/funcionario/:id', FuncionarioController.update)
 
 /**GASTO MATERIAL ROUTES */
 
 /**MATERIAL ROUTES */
-routes.post('/material', EnderecoController.create)
-routes.get('/material', EnderecoController.create)
-routes.get('/material/:id', EnderecoController.create)
-routes.put('/material/:id', EnderecoController.create)
+routes.post('/material', MaterialController.create)
+routes.get('/material', MaterialController.list)
+routes.get('/material/:id', MaterialController.find)
+routes.put('/material/:id', MaterialController.update)
 
 /**SERVICO ROUTES */
-routes.post('/servico', EnderecoController.create)
-routes.get('/servico', EnderecoController.create)
-routes.get('/servico/:id', EnderecoController.create)
-routes.put('/servico/:id', EnderecoController.create)
-routes.delete('/servico/:id', EnderecoController.create)
+routes.post('/servico', ServicoController.create)
+routes.get('/servico', ServicoController.list)
+routes.get('/servico/:id', ServicoController.find)
+routes.put('/servico/:id', ServicoController.update)
+routes.delete('/servico/:id', ServicoController.delete)
 
 /**LAUDO ROUTES */
-routes.post('/laudo', EnderecoController.create)
-routes.get('/laudo', EnderecoController.create)
-routes.get('/laudo/:id', EnderecoController.create)
-routes.put('/laudo/:id', EnderecoController.create)
+routes.post('/laudo', LaudoController.create)
+routes.get('/laudo', LaudoController.list)
+routes.get('/laudo/:id', LaudoController.find)
+routes.put('/laudo/:id', LaudoController.update)
 
 /**TELEFONE ROUTES */
-routes.post('/telefone', EnderecoController.create)
-routes.get('/telefone', EnderecoController.create)
-routes.get('/telefone/:id', EnderecoController.create)
-routes.put('/telefone/:id', EnderecoController.create)
-routes.delete('/telefone/:id', EnderecoController.create)
+routes.post('/telefone', TelefoneController.create)
+routes.get('/telefone', TelefoneController.list)
+routes.get('/telefone/:id', TelefoneController.find)
+routes.put('/telefone/:id', TelefoneController.update)
+routes.delete('/telefone/:id', TelefoneController.delete)
 
 /**PESSOA ROUTES */
-routes.post('/pessoa', EnderecoController.create)
-routes.get('/pessoa', EnderecoController.create)
-routes.get('/pessoa/:id', EnderecoController.create)
-routes.put('/pessoa/:id', EnderecoController.create)
-routes.delete('/pessoa/:id', EnderecoController.create)
+routes.post('/pessoa', PessoaController.create)
+routes.get('/pessoa', PessoaController.list)
+routes.get('/pessoa/:id', PessoaController.find)
+routes.put('/pessoa/:id', PessoaController.update)
+routes.delete('/pessoa/:id', PessoaController.delete)
 
 
 
