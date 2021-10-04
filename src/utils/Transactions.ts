@@ -44,8 +44,11 @@ export default {
 
       const data = await repository.findOne(id);
 
-      if (data)
+      if (data) {
          await repository.delete(data);
+
+         return { message: 'Register deleted successfully' }
+      }
       else
          return { message: "Register does not exist" }
    }

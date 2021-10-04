@@ -3,6 +3,7 @@ import AtendimentoController from './controllers/AtendimentoController';
 import AtendimentoServicoController from './controllers/AtendimentoServicoController';
 import EnderecoController from './controllers/EnderecoController';
 import FuncionarioController from './controllers/FuncionarioController';
+import GastoMaterialController from './controllers/GastoMaterialController';
 import LaudoController from './controllers/LaudoController';
 import MaterialController from './controllers/MaterialController';
 import PessoaController from './controllers/PessoaController';
@@ -28,11 +29,17 @@ routes.delete('/endereco/:id', EnderecoController.delete)
 routes.post('/atendimento', AtendimentoController.create)
 routes.get('/atendimento', AtendimentoController.list)
 routes.get('/atendimento/:id', AtendimentoController.find)
+routes.delete('/atendimento/:id', AtendimentoController.delete)
 
 /**ATENDIMENTO SERVICO ROUTES */
 routes.post('/atendimento-servico', AtendimentoServicoController.create)
 routes.get('/atendimento-servico', AtendimentoServicoController.list)
 routes.get('/atendimento-servico/:id', AtendimentoServicoController.find)
+routes.get('/atendimento-servico/:id/gasto-material', GastoMaterialController.getGastoMaterial)
+
+/**GASTO MATERIAL ROUTES */
+routes.put('/gasto-material', GastoMaterialController.update)
+
 
 /**FUNCIONARIO ROUTES */
 routes.post('/funcionario', FuncionarioController.create)

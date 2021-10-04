@@ -1,8 +1,11 @@
-import { Request, Response } from "express"
+import { Request, response, Response } from "express"
 
 import Transactions from '../utils/Transactions'
 
 import AtendimentoServico from '../models/AtendimentoServico'
+import GastoMaterial from '../models/GastoMaterial'
+
+import { getRepository } from "typeorm"
 
 const RELATIONS = ['laudos', 'servico', 'atendimento', 'atendimento.funcionario', 'atendimento.pessoa', 'atendimento.ubs']
 
