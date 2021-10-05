@@ -4,7 +4,7 @@ import Transactions from '../utils/Transactions'
 
 import GastoMaterial from '../models/GastoMaterial'
 
-import { getRepository } from "typeorm"
+import { getManager, getRepository } from "typeorm"
 
 const RELATIONS = ['laudos', 'servico', 'atendimento', 'atendimento.funcionario', 'atendimento.pessoa', 'atendimento.ubs']
 
@@ -22,16 +22,15 @@ export default {
 
       const repository = getRepository(GastoMaterial)
 
-      const data = await repository.find({
-         relations: ['atendimento_servico'],
-         where: {
-            atendimento_servico: {
-               id_atendimento_servico: id
-            }
-         }
-      })
+      const manager = getManager()
 
-      return res.status(200).json({data: data})
+      const rawData = await manager.query(`SELECT * FROM gasto_material gm
+         WHERE gm.id_atendimento_servico = ${id}
+      `);
+
+      
+
+      return res.status(200).json({data: rawData})
    }
 
 }

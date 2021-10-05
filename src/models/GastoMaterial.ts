@@ -11,7 +11,7 @@ export default class GastoMaterial {
    quantidade: number;
 
    //idAtendimentoServico
-   @ManyToOne(() => AtendimentoServico)
+   @ManyToOne(() => AtendimentoServico, atendimentoServico => atendimentoServico.gastoMateriais)
    @JoinColumn({ name: 'id_atendimento_servico' })
    atendimento_servico: AtendimentoServico;
 

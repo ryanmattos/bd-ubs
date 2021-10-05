@@ -32,7 +32,7 @@ export default {
 
       const response = await Transactions.delete<Atendimento>(Atendimento, Number(id))
 
-      return res.status(200).json({data: response})
+      return res.status(200).json({})
    }
 
 }
