@@ -4,6 +4,8 @@ import Transactions from '../utils/Transactions'
 
 import Material from '../models/Material'
 
+const RELATIONS = new Array<string>()
+
 export default {
    async create(req: Request, res: Response) {
       const response = await Transactions.insert<Material>(Material, req.body)
@@ -14,13 +16,13 @@ export default {
    async find(req: Request, res: Response) {
       const { id } = req.params
 
-      const response = await Transactions.find<Material>(Material, Number(id))
+      const response = await Transactions.find<Material>(Material, Number(id), RELATIONS)
 
       return res.status(200).json({data: response})
    },
 
    async list(req: Request, res: Response) {
-      const response = await Transactions.list<Material>(Material)
+      const response = await Transactions.list<Material>(Material, RELATIONS)
 
       return res.status(200).json({data: response})
    },

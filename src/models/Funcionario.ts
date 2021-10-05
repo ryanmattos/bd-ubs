@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import Pessoa from "./Pessoa";
 import Servico from "./Servico";
+import Ubs from "./Ubs";
 
 @Entity('funcionario')
 export default class Funcionario {
@@ -25,8 +26,11 @@ export default class Funcionario {
    servicos: Servico[];
 
    //idPessoa
-   @OneToOne(() => Pessoa)
+   @OneToOne(() => Pessoa, pessoa => pessoa.funcionario)
    @JoinColumn({ name: 'id_pessoa'})
    pessoa: Pessoa;
 
+   @ManyToOne(() => Ubs, ubs => ubs.funcionarios)
+   @JoinColumn({ name: 'id_ubs'})
+   ubs: Ubs;
 }

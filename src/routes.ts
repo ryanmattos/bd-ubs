@@ -15,8 +15,9 @@ import UbsController from './controllers/UbsController'
 const routes = Router();
 
 /**UBS ROUTES */
-routes.get('/ubs', UbsController.create)
-routes.get('/ubs', UbsController.create)
+routes.post('/ubs', UbsController.create)
+routes.get('/ubs', UbsController.list)
+routes.get('/ubs/:id', UbsController.find)
 
 /**ENDERECO ROUTES */
 routes.post('/endereco', EnderecoController.create)

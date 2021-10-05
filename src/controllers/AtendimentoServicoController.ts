@@ -4,7 +4,7 @@ import Transactions from '../utils/Transactions'
 
 import AtendimentoServico from '../models/AtendimentoServico'
 
-const RELATIONS = ['laudos', 'servico', 'gastoMateriais','atendimento', 'atendimento.funcionario', 'atendimento.pessoa', 'atendimento.ubs']
+const RELATIONS = ['laudos', 'servico','atendimento', 'atendimento.funcionario', 'atendimento.pessoa', 'atendimento.ubs']
 
 export default {
    async create(req: Request, res: Response) {

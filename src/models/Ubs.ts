@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import Endereco from "./Endereco";
+import Funcionario from "./Funcionario";
 
 @Entity('ubs')
 export default class Ubs {
@@ -20,5 +21,11 @@ export default class Ubs {
    @ManyToOne(() => Endereco)
    @JoinColumn({ name: 'id_endereco' })
    endereco: Endereco;
+
+   @OneToMany(() => Funcionario, funcionario => funcionario.ubs, {
+      cascade: ['insert', 'update']
+   })
+   @JoinColumn({ name: 'id_ubs' })
+   funcionarios: Funcionario[];
 
 }

@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import Endereco from "./Endereco";
+import Funcionario from "./Funcionario";
 import Telefone from "./Telefone";
 
 @Entity('pessoa')
@@ -41,4 +42,6 @@ export default class Pessoa {
    @JoinColumn({ name: 'id_endereco' })
    endereco: Endereco;
 
+   @OneToOne(() => Funcionario, funcionario => funcionario.pessoa)
+   funcionario: Funcionario;
 }

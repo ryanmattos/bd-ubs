@@ -4,6 +4,8 @@ import Transactions from '../utils/Transactions'
 
 import Endereco from '../models/Endereco'
 
+const RELATIONS = new Array<string>()
+
 export default {
    async create(req: Request, res: Response) {
       const response = await Transactions.insert<Endereco>(Endereco, req.body)
@@ -14,13 +16,13 @@ export default {
    async find(req: Request, res: Response) {
       const { id } = req.params
 
-      const response = await Transactions.find<Endereco>(Endereco, Number(id))
+      const response = await Transactions.find<Endereco>(Endereco, Number(id), RELATIONS)
 
       return res.status(200).json({data: response})
    },
 
    async list(req: Request, res: Response) {
-      const response = await Transactions.list<Endereco>(Endereco)
+      const response = await Transactions.list<Endereco>(Endereco, RELATIONS)
 
       return res.status(200).json({data: response})
    },

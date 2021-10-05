@@ -27,11 +27,11 @@ export default class AtendimentoServico {
    @JoinColumn({ name: 'id_laudo' })
    laudos: Laudo[];
 
-   @OneToMany(() => GastoMaterial, (gastoMaterial) => gastoMaterial.atendimento_servico, {
-      cascade: ['insert', 'update'],
-   })
-   @JoinColumn({ name: 'id_gasto_material' })
-   gastoMateriais: GastoMaterial[];
+   // @OneToMany(() => GastoMaterial, (gastoMaterial) => gastoMaterial.atendimento_servico, {
+   //    cascade: ['insert', 'update'],
+   // })
+   // @JoinColumn({ name: 'id_gasto_material' })
+   // gastoMateriais: GastoMaterial[];
 
    //idAtendimento
    @ManyToOne(() => Atendimento, atendimento => atendimento.atendimentos_servico)
